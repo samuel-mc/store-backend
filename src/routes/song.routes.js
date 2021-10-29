@@ -1,15 +1,21 @@
 const express = require('express');
 const app = express();
 
-const = {
+const { checkSongData } = require('../middlewares/album.mid');
+
+const {
     postSong,
-    getOneSongs,
+    getOneSong,
     getAllSongs,
-}
+    putSong,
+    deleteSong
+} = require('../controllers/song.controller');
 
 
-app.post('/', postSong);
-app.get('/:id', getOneSongs);
+app.post('/', checkSongData, postSong);
+app.get('/:id', getOneSong);
 app.get('/', getAllSongs);
+app.put('/:id', checkSongData, putSong);
+app.delete('/:id', deleteSong);
 
 module.exports = app;

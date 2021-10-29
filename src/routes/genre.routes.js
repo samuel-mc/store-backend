@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const { checkGenreData } = require('../middlewares/album.mid');
+
 const {
     postGenre,
     getOneGenre,
@@ -9,10 +11,10 @@ const {
     deleteGenre
 } = require('../controllers/genre.controller');
 
-app.post('/', postGenre);
+app.post('/', checkGenreData, postGenre);
 app.get('/:id', getOneGenre);
 app.get('/', getAllGenres);
-app.put('/:id', putGenre);
+app.put('/:id', checkGenreData, putGenre);
 app.delete('/:id', deleteGenre);
 
 module.exports = app;
