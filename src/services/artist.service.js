@@ -2,7 +2,7 @@ const { Artist } = require('../models/artist.model');
 
 class ArtistService {
 
-    static getAll() {
+    getAll() {
         try {
             return Artist.findAll({});
         } catch (error) {
@@ -10,7 +10,7 @@ class ArtistService {
         }
     }
 
-    static getById(id_artist) {
+    getById(id_artist) {
         try {
             return Artist.findOne({ where: { id_artist } });
         } catch (error) {
@@ -18,7 +18,7 @@ class ArtistService {
         }
     }
 
-    static create(name) {
+    create(name) {
         try {
             Artist.create({ name, sells: 0 });
         } catch (error) {
@@ -26,7 +26,7 @@ class ArtistService {
         }
     }
 
-    static updateName(id_artist, name) {
+    updateName(id_artist, name) {
         try {
             Artist.update({ name }, { where: { id_artist } });
         } catch (error) {
@@ -34,7 +34,7 @@ class ArtistService {
         }
     }
 
-    static updateSells(id_artist) {
+    updateSells(id_artist) {
         try {
             Artist.increment('sells', { where: { id_artist } });
         } catch (error) {
@@ -42,7 +42,7 @@ class ArtistService {
         }
     }
 
-    static delete(id_artist) {
+    delete(id_artist) {
         try {
             Artist.destroy({ where: { id_artist } });
         } catch (error) {
@@ -51,4 +51,4 @@ class ArtistService {
     }
 }
 
-module.exports = { ArtistService };
+module.exports = new ArtistService();

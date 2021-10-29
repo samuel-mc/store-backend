@@ -20,13 +20,17 @@ const Album =  db.define('album', {
         allowNull: false,
         type: Sequelize.STRING,
     },
+    description: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+    },
     price: {
         allowNull: false,
         type: Sequelize.FLOAT,
     },
-    description: {
+    stock: {
         allowNull: false,
-        type: Sequelize.TEXT,
+        type: Sequelize.INTEGER,
     },
     sells: {
         allowNull: false,

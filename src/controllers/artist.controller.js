@@ -1,4 +1,4 @@
-const { ArtistService } = require('../services/artist.service');
+const ArtistService = require('../services/artist.service');
 
 const postArtist = async (req, res) => {
     const { name } = req.body;

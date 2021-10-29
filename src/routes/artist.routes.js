@@ -11,11 +11,11 @@ const {
 } = require('../controllers/artist.controller');
 
 // Routes for the artist
-app.post('/artists', postArtist);
-app.get('/artists', getAllArtists);
-app.get('/artists/:id', getOneArtist);
-app.put('/artists/:id/name', putArtistName);
-app.put('/artists/:id/sells', putArtistSells);
-app.delete('/artists/:id', deleteArtist);
+app.post('/', postArtist);
+app.get('/', getAllArtists);
+app.get('/:id', getOneArtist);
+app.put('/:id/name', putArtistName);
+app.put('/:id/sells', putArtistSells);
+app.delete('/:id', deleteArtist);
 
 module.exports = app;
