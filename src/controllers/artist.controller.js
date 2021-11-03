@@ -3,7 +3,7 @@ const ArtistService = require('../services/artist.service');
 const postArtist = async (req, res) => {
     const { name } = req.body;
     try {
-        await ArtistService.create(name);
+        const artist = await ArtistService.create(name);
         res.status(201).json({ message: 'Artist created' });
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -36,6 +36,7 @@ const putArtistName = async (req, res) => {
         await ArtistService.updateName(id, name);
         res.status(200).json({ message: 'Artist updated' });
     } catch (error) {
+        console.log(error);
         res.status(400).json({ message: error.message });
     }
 };

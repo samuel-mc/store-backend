@@ -1,9 +1,39 @@
 
 const AlbumService = require('../services/album.service');
+const ArtistService = require('../services/artist.service');
+const GenreService = require('../services/genre.service');
 
 const postAlbum = async (req, res) => {
+    let { id_artist, id_genre } = req.body;
+    if (id_artist === 0) {
+        try {
+            const artist = await ArtistService.create(req.body.name_artist);
+            id_artist = artist.dataValues.id_artist;
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+    if (id_genre === 0) {
+        try {
+            const genre = await GenreService.create(req.body.name_genre);
+            id_genre = genre.dataValues.id_genre;
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+    const data ={
+        title: req.body.title,
+        year: req.body.year,
+        cover: req.body.cover,
+        price: req.body.price,
+        description: req.body.description,
+        stock: req.body.stock,
+        id_artist,
+        id_genre
+    }
+
     try {
-        await AlbumService.create(req.body);
+        await AlbumService.create(data);
         res.status(201).json({ message: 'Album created' });
     } catch (err) {
         res.status(500).json({ message: err.message });

@@ -8,7 +8,9 @@ module.exports.validateAlbumData = Joi.object().keys({
     price: Joi.number().required(),
     stock: Joi.number().integer().required(),
     id_artist: Joi.number().integer().required(),
-    id_genre: Joi.number().integer().required()
+    id_genre: Joi.number().integer().required(),
+    name_artist: Joi.string(),
+    name_genre: Joi.string()
 });
 
 module.exports.validateArtistData = Joi.object().keys({

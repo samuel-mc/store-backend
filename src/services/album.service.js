@@ -1,4 +1,6 @@
 const { Album } = require('../models/album.model');
+const { Artist } = require('../models/artist.model');
+const { Genre } = require('../models/genre.model');
 
 class AlbumService {
     create(data) {
@@ -21,7 +23,18 @@ class AlbumService {
     
     getAll() {
         try {
-            return Album.findAll();
+            return Album.findAll({
+                include: [
+                    { model: Artist, as: 'artist' },
+                    { model: Genre, as: 'genre' }
+                ],
+                attributes: {
+                    exclude: ['id_artist', 'id_genre'],
+                },
+                order: [
+                    ['title', 'ASC']
+                ]
+            });
         } catch (error) {
             throw new Error(error);
         }

@@ -4,7 +4,11 @@ class ArtistService {
 
     getAll() {
         try {
-            return Artist.findAll({});
+            return Artist.findAll({
+                order: [
+                    ['name', 'ASC']
+                ]
+            });
         } catch (error) {
             throw new Error(error);
         }
@@ -18,9 +22,10 @@ class ArtistService {
         }
     }
 
-    create(name) {
+    async create(name) {
         try {
-            Artist.create({ name, sells: 0 });
+            const artist =  await Artist.create({ name, sells: 0 });
+            return artist;
         } catch (error) {
             throw new Error(error);
         }

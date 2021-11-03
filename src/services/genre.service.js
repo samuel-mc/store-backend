@@ -3,7 +3,8 @@ const { Genre } = require('../models/genre.model');
 class GenreService {
     create(name) {
         try {
-            Genre.create({ name });
+            const genre = Genre.create({ name });
+            return genre;
         } catch (error) {
             throw new Error(error);
         }

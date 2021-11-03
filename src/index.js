@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const sequelize = require('./db/db.connection');
+const cors = require('cors');
 require('dotenv').config();
 
 
 // Middlewares globales
 app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
+app.use(cors());
 
 app.listen(process.env.PORT, async () =>{
     try {
