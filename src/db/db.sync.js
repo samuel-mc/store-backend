@@ -7,13 +7,14 @@ const { Song } = require('../models/song.model');
 //     console.log('Artist table created');
 // });
 
+// Genre.sync().then(() => {
+//     console.log('Genre table created');
+// });
+
 // Album.sync().then(() => {
 //     console.log('Album table created');
 // });
 
-// Genre.sync().then(() => {
-//     console.log('Genre table created');
-// });
 
 // Song.sync().then(() => {
 //     console.log('Song table created');
