@@ -19,4 +19,5 @@ app.listen(process.env.PORT, async () =>{
     }
 })
 
+app.get('/', (req, res) => res.redirect('/api/v1/albums'));
 app.use('/api/v1/', require('./routes/index.routes'));
